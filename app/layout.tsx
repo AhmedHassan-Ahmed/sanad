@@ -5,23 +5,23 @@ import './globals.css'
 export const metadata: Metadata = {
   title: 'SANAD — A smarter way to move',
   description: 'SANAD is a smart wearable concept designed to help you build better everyday posture habits.',
-  generator: 'v0.app',
+  generator: 'v.app',
   icons: {
     icon: [
       {
-        url: '/icon-light-32x32.png',
+        url: '/740779549_122096035749394045_187041232969110960_n.jpg',
         media: '(prefers-color-scheme: light)',
       },
       {
-        url: '/icon-dark-32x32.png',
+        url: '/740779549_122096035749394045_187041232969110960_n.jpg',
         media: '(prefers-color-scheme: dark)',
       },
       {
-        url: '/icon.svg',
+        url: '/740779549_122096035749394045_187041232969110960_n.jpg',
         type: 'image/svg+xml',
       },
     ],
-    apple: '/apple-icon.png',
+    apple: '/740779549_122096035749394045_187041232969110960_n.jpg',
   },
 }
 
