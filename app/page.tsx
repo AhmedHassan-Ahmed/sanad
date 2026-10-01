@@ -26,7 +26,7 @@ import {
 
 const PRODUCT_IMAGE =
   "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-cqbbe0xklJI4KKwEURJsYfrpqZJitb.png";
-const SANAD_WHATSAPP_NUMBER = "⁦01101054262⁩";
+const SANAD_WHATSAPP_NUMBER = "01101054262";
 
 const navItems = [
   ["Technology", "#technology"],
