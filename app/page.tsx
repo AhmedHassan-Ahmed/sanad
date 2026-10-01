@@ -26,7 +26,7 @@ import {
 
 const PRODUCT_IMAGE =
   "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-cqbbe0xklJI4KKwEURJsYfrpqZJitb.png";
-const SANAD_WHATSAPP_NUMBER = "⁦+201101054262⁩";
+const SANAD_WHATSAPP_NUMBER = "⁦01101054262⁩";
 
 const navItems = [
   ["Technology", "#technology"],
@@ -188,7 +188,7 @@ export default function Page() {
   const submit = (event: React.FormEvent) => {
     event.preventDefault();
     if (!validate()) return;
-    if (SANAD_WHATSAPP_NUMBER !== "+201101054262") {
+    if (SANAD_WHATSAPP_NUMBER === "01101054262") {
       setErrors({
         form: "WhatsApp is not configured yet. Please add SANAD’s international number in the page configuration.",
       });
