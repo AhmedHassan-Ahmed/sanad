@@ -33,3 +33,4 @@ The project adds `three` and `@types/three` for the decorative background. The T
 ## WhatsApp
 
 The inquiry form uses the existing configured SANAD WhatsApp destination in `app/page.tsx`. Visitors review the prefilled message and press Send in WhatsApp themselves.
+# school-management
