@@ -1,0 +1,251 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  color-scheme: light;
+  --background: oklch(0.97 0.012 220);
+  --foreground: oklch(0.22 0.035 235);
+  --card: oklch(0.99 0.005 220);
+  --card-foreground: oklch(0.22 0.035 235);
+  --popover: oklch(0.99 0.005 220);
+  --popover-foreground: oklch(0.22 0.035 235);
+  --primary: oklch(0.55 0.11 195);
+  --primary-foreground: oklch(0.99 0.005 220);
+  --secondary: oklch(0.93 0.02 220);
+  --secondary-foreground: oklch(0.25 0.04 235);
+  --muted: oklch(0.93 0.02 220);
+  --muted-foreground: oklch(0.5 0.035 220);
+  --accent: oklch(0.93 0.02 220);
+  --accent-foreground: oklch(0.25 0.04 235);
+  --destructive: oklch(0.58 0.2 25);
+  --border: oklch(0.82 0.025 220 / 65%);
+  --input: oklch(0.82 0.025 220 / 65%);
+  --ring: oklch(0.88 0.14 195);
+  --radius: 0.75rem;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+}
+
+@layer base {
+  * { @apply border-border outline-ring/50; }
+  html { scroll-behavior: smooth; }
+  body { @apply bg-background text-foreground; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+}
+
+::selection { background: #67e8f9; color: #06121f; }
+
+
+/* SANAD product-experience polish */
+.sanad-hero-product { transform-style: preserve-3d; perspective: 1200px; will-change: transform, opacity; }
+.sanad-hero-product img { transition: filter 350ms ease; }
+.sanad-hero-product:hover img { filter: contrast(1.025) saturate(1.04); }
+[data-gsap-card] { transform-origin: center bottom; }
+input[type="range"] { cursor: pointer; }
+@media (prefers-reduced-motion: reduce) { .sanad-hero-product { will-change: auto; } }
+
+/* SANAD immersive Three.js ambience */
+.sanad-three-background {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  opacity: .9;
+}
+.theme-dark, .theme-light { position: relative; isolation: isolate; transition: background-color .35s ease, color .35s ease; }
+.theme-dark { background: #06121f; color: #f1f8ff; }
+.theme-light { background: #f4f8fb; color: #102538; }
+.theme-dark > section, .theme-light > section { position: relative; z-index: 1; }
+.theme-dark > header { z-index: 50; }
+.theme-light > header { z-index: 50; background: rgba(246,250,253,.86) !important; border-color: rgba(15,47,70,.12) !important; color: #102538; box-shadow: 0 8px 35px rgba(27,65,88,.06); }
+.theme-light > header a, .theme-light > header button { color: #17364b; }
+.theme-light > header a[href="#contact"] { background: #087e8b !important; color: white !important; }
+.theme-light > section { background-color: rgba(244,248,251,.78) !important; border-color: rgba(20,59,81,.1) !important; }
+.theme-light > section#home { background: linear-gradient(135deg,rgba(244,248,251,.92),rgba(232,245,248,.76)) !important; }
+.theme-light > section#pricing { background: linear-gradient(135deg,rgba(234,245,249,.93),rgba(245,249,252,.93)) !important; }
+.theme-light > section#team { background: linear-gradient(135deg,rgba(226,241,247,.92),rgba(244,249,252,.93)) !important; }
+.theme-light > section#contact { background: linear-gradient(135deg,rgba(223,243,245,.96),rgba(242,248,252,.96)) !important; }
+.theme-light footer { position: relative; z-index: 1; background: #e7f0f5 !important; border-color: rgba(20,59,81,.12) !important; }
+.theme-light h1, .theme-light h2, .theme-light h3, .theme-light h4,
+.theme-light .text-white, .theme-light .text-slate-100, .theme-light .text-slate-200,
+.theme-light .text-slate-300 { color: #102b40 !important; }
+.theme-light .text-slate-400, .theme-light .text-slate-500, .theme-light .text-slate-600 { color: #526b7d !important; }
+.theme-light .text-cyan-100, .theme-light .text-cyan-200, .theme-light .text-cyan-300 { color: #087e8b !important; }
+.theme-light .border-white\/10, .theme-light .border-white\/15, .theme-light .border-white\/\[0\.07\] { border-color: rgba(22,64,88,.15) !important; }
+.theme-light .bg-white\/5, .theme-light .bg-white\/\[0\.03\], .theme-light .bg-white\/\[0\.02\] { background-color: rgba(255,255,255,.68) !important; }
+.theme-light .team-profile { background: rgba(255,255,255,.8) !important; border-color: rgba(22,64,88,.14) !important; box-shadow: 0 20px 60px rgba(33,83,108,.12) !important; }
+.theme-light .purchase-form { background: rgba(255,255,255,.78) !important; border-color: rgba(22,64,88,.14) !important; }
+.theme-light input:not([type="checkbox"]), .theme-light textarea, .theme-light select { background-color: rgba(255,255,255,.9) !important; color: #102b40 !important; border-color: rgba(22,64,88,.2) !important; }
+.theme-light input::placeholder, .theme-light textarea::placeholder { color: #71889a !important; }
+.theme-light .team-profile-image img { filter: saturate(1.04); }
+.theme-light .sanad-hero-product { background: linear-gradient(145deg,rgba(255,255,255,.92),rgba(218,239,245,.72)) !important; border-color: rgba(20,105,126,.18) !important; box-shadow: 0 30px 80px rgba(37,94,118,.15) !important; }
+.theme-light .sanad-hero-product .bg-\[\#06121f\]\/60 { background: rgba(255,255,255,.8) !important; }
+.theme-light .sanad-hero-product .text-slate-500 { color: #526b7d !important; }
+.theme-light .sanad-three-background { opacity: .38; }
+@media (max-width: 640px) { .sanad-three-background { opacity: .55; } }
+@media (prefers-reduced-motion: reduce) { .theme-dark, .theme-light { transition: none; } }
+
+.theme-dark > section { background-color: rgba(6,18,31,.76); }
+.theme-dark > section#pricing { background: linear-gradient(135deg,rgba(6,18,31,.82),rgba(6,18,31,.72)) !important; }
+.theme-dark > section#team { background: linear-gradient(135deg,rgba(8,26,43,.86),rgba(6,18,31,.82)) !important; }
+.theme-dark > section#contact { background: linear-gradient(135deg,rgba(11,42,64,.82),rgba(6,18,31,.88)) !important; }
+.team-track { scrollbar-width: thin; scrollbar-color: rgba(94,234,212,.4) transparent; }
+.team-track::-webkit-scrollbar { height: 6px; }
+.team-track::-webkit-scrollbar-track { background: transparent; }
+.team-track::-webkit-scrollbar-thumb { background: rgba(94,234,212,.35); border-radius: 999px; }
+
+
+/* Bilingual defaults and RTL support */
+html[dir="rtl"] body { font-family: Tahoma, Arial, "Noto Sans Arabic", sans-serif; }
+html[dir="rtl"] .tracking-\[0\.28em\], html[dir="rtl"] .tracking-\[0\.25em\], html[dir="rtl"] .tracking-\[0\.2em\], html[dir="rtl"] .tracking-\[0\.18em\] { letter-spacing: normal; }
+html[dir="rtl"] .fixed.bottom-5.right-5 { right: auto !important; left: 1.25rem !important; }
+html[dir="rtl"] .border-l { border-left: 0; border-right: 1px solid rgba(103,232,249,.5); padding-left: 0; padding-right: 1rem; }
+html[dir="rtl"] .text-left { text-align: right; }
+html[dir="rtl"] .text-right { text-align: left; }
+html[dir="rtl"] .team-profile .absolute.right-6 { right: auto; left: 1.5rem; }
+html[dir="rtl"] .team-profile h3 { padding-right: 0; padding-left: 1.25rem; }
+.theme-light { color-scheme: light; }
+.theme-dark { color-scheme: dark; }
+
+/* Light theme surface tuning for the default Arabic experience */
+.theme-light .bg-\[\#081a2b\],
+.theme-light .bg-\[\#0b2236\] { background-color: rgba(255,255,255,.78) !important; }
+.theme-light .bg-\[\#06121f\] { background-color: rgba(248,252,254,.88) !important; }
+.theme-light .bg-\[\#0c2439\] { background-color: rgba(232,245,249,.96) !important; }
+.theme-light .bg-\[\#123653\] { background-color: rgba(229,244,248,.95) !important; }
+.theme-light .bg-\[\#071521\] { background-color: rgba(241,249,251,.9) !important; }
+.theme-light .bg-gradient-to-br.from-\[\#0d2c41\].to-\[\#071521\] { background: linear-gradient(135deg, #edf8fa, #f9fcfd) !important; }
+.theme-light .bg-gradient-to-br.from-\[\#123653\].to-\[\#081522\] { background: linear-gradient(135deg, #e8f5f8, #f8fbfd) !important; }
+.theme-light .purchase-form { color: #17364b; }
+.theme-light .purchase-form label { color: #29485b !important; }
+.theme-light .purchase-form .text-amber-200 { color: #8a5a00 !important; }
+.theme-light .purchase-form .text-rose-300 { color: #b42335 !important; }
+.theme-light .sanad-hero-product .bg-\[\#06121f\]\/60 { color: #17364b !important; }
+.theme-light .team-profile .bg-\[\#071522\]\/60 { color: #eafcff !important; }
+html[dir="rtl"] .sanad-hero-product .absolute.left-8 { left: auto; right: 2rem; }
+html[dir="rtl"] .team-profile .absolute.bottom-4.left-4 { left: auto; right: 1rem; }
+
+/* Contrast-corrected light theme: explicitly replace dark utility card surfaces. */
+main.theme-light #how-it-works .group,
+main.theme-light #features article,
+main.theme-light #pricing article,
+main.theme-light .purchase-form,
+main.theme-light .team-profile,
+main.theme-light [data-gsap-card],
+main.theme-light .app-preview-card {
+  background: rgba(255,255,255,.94) !important;
+  color: #102b40 !important;
+  border-color: rgba(20,82,105,.16) !important;
+  box-shadow: 0 18px 50px rgba(20,68,91,.10) !important;
+}
+main.theme-light #pricing article:nth-child(2) {
+  background: linear-gradient(145deg, #e4f8fb 0%, #f8fcfd 56%, #d9f1f4 100%) !important;
+  border-color: rgba(8,145,178,.42) !important;
+  box-shadow: 0 24px 60px rgba(8,145,178,.16) !important;
+}
+main.theme-light #how-it-works .group h3,
+main.theme-light #features article h3,
+main.theme-light #pricing article p,
+main.theme-light #pricing article li,
+main.theme-light .team-profile h3,
+main.theme-light .team-profile p,
+main.theme-light .purchase-form label {
+  color: #17364b !important;
+}
+main.theme-light #pricing article .text-white,
+main.theme-light #pricing article .text-slate-100,
+main.theme-light #pricing article .text-slate-200,
+main.theme-light #pricing article .text-slate-300,
+main.theme-light #pricing article .text-slate-400,
+main.theme-light #pricing article .text-slate-500,
+main.theme-light #features article .text-slate-400,
+main.theme-light #features article .text-slate-500,
+main.theme-light #how-it-works .group .text-slate-400,
+main.theme-light #how-it-works .group .text-slate-500,
+main.theme-light .team-profile .text-slate-400 {
+  color: #526b7d !important;
+}
+main.theme-light #pricing article .text-cyan-100,
+main.theme-light #pricing article .text-cyan-200,
+main.theme-light #pricing article .text-cyan-300,
+main.theme-light #features article .text-cyan-300,
+main.theme-light .team-profile .text-cyan-300 {
+  color: #087e8b !important;
+}
+main.theme-light #pricing article a:not([class*="bg-cyan"]),
+main.theme-light #pricing article a:not([class*="bg-cyan"]) svg {
+  color: #075b69 !important;
+}
+main.theme-light .team-profile-image .bg-\[\#071522\]\/60 {
+  background: rgba(12,43,58,.72) !important;
+  color: #eaffff !important;
+}
+main.theme-light #features,
+main.theme-light #pricing,
+main.theme-light #team {
+  color: #102b40;
+}
+main.theme-light #features > div > div article,
+main.theme-light #team .team-profile {
+  backdrop-filter: blur(14px);
+}
+main.theme-light .team-grid { align-items: stretch; }
+main.theme-light .team-profile { transform-style: preserve-3d; }
+main.theme-light .team-profile-image img { filter: saturate(1.06) contrast(1.02); }
+main.theme-light #pricing .bg-white\/\[0\.03\] {
+  background: rgba(255,255,255,.84) !important;
+  color: #526b7d !important;
+}
+
+/* Field-specific Three.js background remains visible but never competes with content. */
+.sanad-three-background { z-index: 0; opacity: .76; transition: opacity .4s ease; }
+main.theme-light .sanad-three-background { opacity: .48; }
+main.theme-dark .sanad-three-background { opacity: .82; }
+main.theme-light > section, main.theme-dark > section { position: relative; z-index: 1; }
+main.theme-light > header, main.theme-dark > header { z-index: 50; }
+
+/* Show every SANAD contributor at once; no carousel arrows or pagination required. */
+.team-grid { perspective: 1200px; }
+.team-grid .team-profile { min-width: 0 !important; width: 100%; }
+.team-grid .team-profile-image { min-height: 260px; }
+@media (min-width: 1280px) {
+  .team-grid .team-profile-image { min-height: 300px; }
+}
+@media (max-width: 639px) {
+  .team-grid .team-profile-image { min-height: 230px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sanad-three-background { transition: none; }
+}
