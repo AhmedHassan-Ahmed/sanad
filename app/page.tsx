@@ -525,7 +525,7 @@ export default function Page() {
       ref={pageRef}
       dir={language === "ar" ? "rtl" : "ltr"}
       lang={language}
-      className={`theme-${theme} min-h-screen overflow-hidden selection:bg-cyan-300 selection:text-[#06121f]`}
+      className={`${theme === "dark" ? "dark" : ""} theme-${theme} min-h-screen overflow-hidden selection:bg-cyan-300 selection:text-[#06121f]`}
     >
       <ThreeBackground />
       <header className="fixed inset-x-0 top-0 z-50 border-b border-white/[0.07] bg-[#06121f]/80 backdrop-blur-xl">
@@ -943,7 +943,7 @@ export default function Page() {
 
       <section
         id="sensor-lab"
-        className="mx-auto max-w-7xl px-5 py-24 lg:px-8 lg:py-32"
+        className="mx-auto max-w-7xl px-5 py-24 text-slate-900 dark:text-white lg:px-8 lg:py-32"
       >
         <div
           data-gsap-reveal
@@ -951,15 +951,15 @@ export default function Page() {
         >
           {/* Technology information */}
           <div>
-            <p className="mb-4 text-xs font-bold tracking-[0.25em] text-cyan-600 uppercase">
+            <p className="mb-4 text-xs font-bold tracking-[0.25em] text-cyan-700 uppercase dark:text-cyan-300">
               {tr("Inside the technology")}
             </p>
 
-            <h2 className="text-4xl font-semibold tracking-[-0.04em] text-slate-900 sm:text-5xl">
+            <h2 className="text-4xl font-semibold tracking-[-0.04em] text-slate-900 dark:text-white sm:text-5xl">
               {tr("Feedback with a little more intelligence.")}
             </h2>
 
-            <p className="mt-6 max-w-xl leading-8 text-slate-600">
+            <p className="mt-6 max-w-xl leading-8 text-slate-600 dark:text-slate-400">
               {tr(
                 "SANAD uses a six-axis motion-sensing approach and a personalized posture threshold. A 10-second sustained-threshold delay is designed to help filter out brief everyday movements before vibration feedback is triggered.",
               )}
@@ -989,12 +989,12 @@ export default function Page() {
               ].map((item) => (
                 <div
                   key={item.title}
-                  className="rounded-2xl border border-slate-200 bg-white/80 p-5"
+                  className="rounded-2xl border border-slate-200 bg-white/80 p-5 dark:border-white/10 dark:bg-white/[0.03]"
                 >
-                  <p className="text-2xl font-semibold text-slate-900">
+                  <p className="text-2xl font-semibold text-slate-900 dark:text-white">
                     {tr(item.title)}
                   </p>
-                  <p className="mt-2 text-sm leading-6 text-slate-600">
+                  <p className="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-500">
                     {tr(item.description)}
                   </p>
                 </div>
@@ -1002,24 +1002,24 @@ export default function Page() {
             </div>
           </div>
 
-          {/* Interactive posture demo */}
-          <div className="rounded-3xl border border-cyan-200 bg-gradient-to-br from-[#eefafa] to-[#f8fbfc] p-6 sm:p-8">
+          {/* Interactive demo */}
+          <div className="rounded-3xl border border-cyan-200 bg-gradient-to-br from-[#eefafa] to-[#f8fbfc] p-6 dark:border-cyan-300/20 dark:from-[#0d2c41] dark:to-[#071521] sm:p-8">
             <div className="flex items-start justify-between gap-4">
               <div>
-                <p className="text-xs font-bold tracking-[0.2em] text-cyan-700 uppercase">
+                <p className="text-xs font-bold tracking-[0.2em] text-cyan-700 uppercase dark:text-cyan-300">
                   {tr("Interactive demo")}
                 </p>
-                <h3 className="mt-2 text-2xl font-semibold text-slate-900">
+                <h3 className="mt-2 text-2xl font-semibold text-slate-900 dark:text-white">
                   {tr("Explore a posture angle")}
                 </h3>
               </div>
 
-              <span className="rounded-full border border-slate-200 px-3 py-1 text-xs text-slate-500">
+              <span className="rounded-full border border-slate-200 px-3 py-1 text-xs text-slate-500 dark:border-white/10 dark:text-slate-400">
                 {tr("Simulation")}
               </span>
             </div>
 
-            <div className="mt-8 flex items-center justify-center rounded-2xl border border-white/10 bg-[#4b5862] p-6">
+            <div className="mt-8 flex items-center justify-center rounded-2xl border border-slate-200 bg-slate-100 p-6 dark:border-white/10 dark:bg-[#4b5862]">
               <svg
                 viewBox="0 0 260 220"
                 className="h-56 w-full max-w-xs"
@@ -1043,7 +1043,7 @@ export default function Page() {
                   </linearGradient>
                 </defs>
 
-                {/* Vertical upright reference */}
+                {/* Upright reference */}
                 <path
                   d="M130 28 L130 188"
                   stroke="#294354"
@@ -1055,11 +1055,11 @@ export default function Page() {
                   const angle = (demoAngle / 25) * (Math.PI / 7);
                   const lean = Math.sin(angle);
 
-                  // Head: follows the torso slightly.
+                  // Head remains close to the center line.
                   const headX = 130 - lean * 7;
                   const headY = 39;
 
-                  // Shoulders slope forward like "/".
+                  // Shoulder/upper-body line tilts forward: /
                   const shoulderLeftX = 130 - lean * 28;
                   const shoulderLeftY = 76;
                   const neckX = 130 - lean * 10;
@@ -1067,7 +1067,7 @@ export default function Page() {
                   const shoulderRightX = 130 + lean * 19;
                   const shoulderRightY = 84;
 
-                  // Back curves the opposite way like "\".
+                  // Back curves in the opposite direction: \
                   const backTopX = 130 - lean * 8;
                   const backTopY = 66;
                   const backMidX = 130 + lean * 23;
@@ -1077,7 +1077,6 @@ export default function Page() {
 
                   return (
                     <>
-                      {/* Head */}
                       <circle
                         cx={headX}
                         cy={headY}
@@ -1087,7 +1086,6 @@ export default function Page() {
                         strokeWidth="2"
                       />
 
-                      {/* Neck and angled shoulders */}
                       <path
                         d={`M${shoulderLeftX} ${shoulderLeftY}
                       L${neckX} ${neckY}
@@ -1099,7 +1097,6 @@ export default function Page() {
                         strokeLinejoin="round"
                       />
 
-                      {/* Curved back */}
                       <path
                         d={`M${backTopX} ${backTopY}
                       Q${backMidX} ${backMidY}
@@ -1110,7 +1107,6 @@ export default function Page() {
                         strokeLinecap="round"
                       />
 
-                      {/* Lower-back anchor */}
                       <circle
                         cx={backBottomX}
                         cy={backBottomY}
@@ -1118,7 +1114,6 @@ export default function Page() {
                         fill="#5eead4"
                       />
 
-                      {/* Angle marker */}
                       <path
                         d={`M130 82 L${130 - lean * 24} 82`}
                         fill="none"
@@ -1126,8 +1121,6 @@ export default function Page() {
                         strokeWidth="2"
                         strokeDasharray="4 4"
                       />
-
-                      <text x="18" y="204" fill="#b7d0e0" fontSize="10"></text>
 
                       <text
                         x="242"
@@ -1145,13 +1138,17 @@ export default function Page() {
               </svg>
             </div>
 
-            {/* Angle slider */}
+            {/* Slider */}
             <div className="mt-6">
-              <div className="flex items-center justify-between text-sm">
-                <label htmlFor="angle-range" className="text-slate-700">
+              <div className="flex items-center justify-between gap-3 text-sm">
+                <label
+                  htmlFor="angle-range"
+                  className="text-slate-700 dark:text-slate-300"
+                >
                   {tr("Illustrative tilt")}
                 </label>
-                <span className="font-semibold text-cyan-700">
+
+                <span className="font-semibold text-cyan-700 dark:text-cyan-200">
                   {demoAngle}°
                 </span>
               </div>
@@ -1163,16 +1160,17 @@ export default function Page() {
                 max="25"
                 value={demoAngle}
                 onChange={(event) => setDemoAngle(Number(event.target.value))}
-                className="mt-4 w-full accent-cyan-500"
+                className="mt-4 w-full accent-cyan-500 dark:accent-cyan-300"
               />
 
-              <div className="mt-2 flex justify-between text-xs text-slate-500">
+              <div className="mt-2 flex justify-between text-xs text-slate-500 dark:text-slate-600">
                 <span>{tr("0° baseline")}</span>
                 <span>{tr("25° tilt")}</span>
               </div>
             </div>
 
-            <p className="mt-5 rounded-xl border border-slate-200 bg-white/70 p-4 text-xs leading-5 text-slate-600">
+            {/* Disclaimer */}
+            <p className="mt-5 rounded-xl border border-slate-200 bg-white/70 p-4 text-xs leading-5 text-slate-600 dark:border-white/10 dark:bg-white/[0.03] dark:text-slate-500">
               {tr(
                 "Illustrative browser simulation only. It is not connected to a SANAD device and does not represent a clinical assessment or a verified product threshold.",
               )}
