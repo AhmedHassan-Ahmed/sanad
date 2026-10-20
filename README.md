@@ -63,17 +63,7 @@ Each module follows a feature-based structure, keeping models, interfaces, contr
 - Search and pagination
 - Timetable conflict validation
 
-> **Note:** This project is currently a starter structure. Controllers, services, and routes are intentionally left empty. The planned features have not been implemented yet.
 
-## Getting Started
-
-### Prerequisites
-
-Make sure you have the following installed:
-
-- [Node.js](https://nodejs.org/)
-- [MongoDB Community Server](https://www.mongodb.com/try/download/community) or a MongoDB connection URI
-- npm
 
 ### 1. Clone the Repository
 
@@ -139,5 +129,4 @@ The initial focus is on establishing the project foundation and data models befo
 
 No license has been specified yet.
 
-# school-management
 # school-management
