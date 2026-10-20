@@ -642,7 +642,7 @@ export default function Page() {
               onClick={() => setMenuOpen(false)}
               className="text-sm font-semibold text-cyan-300"
             >
-              {tr("Join SANAD")} <ArrowRight className="ml-1 inline size-4" />
+              {tr("Pay SANAD")} <ArrowRight className="ml-1 inline size-4" />
             </a>
           </nav>
         )}
