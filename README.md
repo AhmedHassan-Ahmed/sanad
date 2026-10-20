@@ -1,36 +1,140 @@
-# SANAD Core Experience
+# School Management System API
 
-Premium SANAD wearable-product website built with Next.js, React, TypeScript, Tailwind CSS, GSAP, and Three.js.
+A backend starter project for a School Management System built with **Node.js, Express.js, TypeScript, MongoDB, and Mongoose**.
 
-## Included updates
+This repository provides the initial project structure, Mongoose models, TypeScript interfaces, and database connection setup. It is designed to serve as a foundation for future development.
 
-- Persistent light/dark theme toggle in the navigation.
-- Three.js decorative 3D wireframe and particle background with pointer-responsive movement and reduced-motion support.
-- Larger, horizontal team profile cards using the existing team portraits and names.
-- Simplified product inquiry form focused on purchasing and product details.
-- Removed application type and team-role fields.
-- Optional message field. If left empty, WhatsApp opens with a default request for product details, pricing, availability, package contents, and ordering information.
-- Current SANAD pricing and product imagery retained.
+## Tech Stack
 
-## Run locally
+- **Node.js** — JavaScript runtime
+- **Express.js** — Web application framework
+- **TypeScript** — Static typing
+- **MongoDB** — NoSQL database
+- **Mongoose** — MongoDB object modeling
+- **dotenv** — Environment variable management
 
-Use Node.js 20.9+ and install dependencies with your package manager:
+## Project Structure
+
+```text
+src/
+├── config/
+│   └── database.ts
+├── modules/
+│   ├── students/
+│   │   ├── student.interface.ts
+│   │   ├── student.model.ts
+│   │   ├── student.controller.ts
+│   │   ├── student.service.ts
+│   │   └── student.routes.ts
+│   ├── teachers/
+│   ├── classes/
+│   ├── subjects/
+│   └── timetables/
+├── app.ts
+└── server.ts
+```
+
+Each module follows a feature-based structure, keeping models, interfaces, controllers, services, and routes organized separately.
+
+## Current Status
+
+### Implemented
+
+- Initial Express.js server setup
+- MongoDB connection using Mongoose
+- Environment variable configuration
+- TypeScript configuration
+- Mongoose models and TypeScript interfaces for:
+  - Students
+  - Teachers
+  - Classes
+  - Subjects
+  - Timetables
+- Timestamps for created and updated records
+- Unique index for student codes
+- References between related models
+
+### Planned
+
+- Authentication and authorization
+- CRUD operations for all modules
+- Request validation
+- Centralized error handling
+- Search and pagination
+- Timetable conflict validation
+
+> **Note:** This project is currently a starter structure. Controllers, services, and routes are intentionally left empty. The planned features have not been implemented yet.
+
+## Getting Started
+
+### Prerequisites
+
+Make sure you have the following installed:
+
+- [Node.js](https://nodejs.org/)
+- [MongoDB Community Server](https://www.mongodb.com/try/download/community) or a MongoDB connection URI
+- npm
+
+### 1. Clone the Repository
+
+```bash
+git clone <repository-url>
+cd school-management-api-starter
+```
+
+### 2. Install Dependencies
 
 ```bash
 npm install
+```
+
+### 3. Configure Environment Variables
+
+Create a `.env` file in the project root based on `.env.example`:
+
+```env
+PORT=3000
+MONGODB_URI=mongodb://127.0.0.1:27017/school_management
+```
+
+Update `MONGODB_URI` if your MongoDB instance uses a different connection string.
+
+### 4. Start the Development Server
+
+```bash
 npm run dev
 ```
 
-For a production build:
+The server will connect to MongoDB and listen on the configured port, `3000` by default.
+
+### 5. Build the Project
 
 ```bash
 npm run build
+```
+
+To run the compiled application:
+
+```bash
 npm start
 ```
 
-The project adds `three` and `@types/three` for the decorative background. The Three.js background is ambient visual design, not a 3D model of the SANAD hardware. A genuine rotatable device model requires the latest product's `.glb` or `.gltf` asset.
+## Data Models
 
-## WhatsApp
+| Model | Purpose |
+|---|---|
+| Student | Stores student information and class reference |
+| Teacher | Stores teacher information |
+| Class | Stores class name and grade level |
+| Subject | Stores subject information |
+| Timetable | Stores class, teacher, subject, day, and time references |
 
-The inquiry form uses the existing configured SANAD WhatsApp destination in `app/page.tsx`. Visitors review the prefilled message and press Send in WhatsApp themselves.
-# school-management
+## Development Approach
+
+The project uses a modular, feature-based architecture to keep the codebase organized and maintainable as new features are added.
+
+The initial focus is on establishing the project foundation and data models before implementing business logic and API endpoints.
+
+## License
+
+No license has been specified yet.
