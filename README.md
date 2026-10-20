@@ -138,3 +138,4 @@ The initial focus is on establishing the project foundation and data models befo
 ## License
 
 No license has been specified yet.
+# school-management
