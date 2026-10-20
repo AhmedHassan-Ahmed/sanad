@@ -121,12 +121,12 @@ npm start
 
 ## Data Models
 
-| Model | Purpose |
-|---|---|
-| Student | Stores student information and class reference |
-| Teacher | Stores teacher information |
-| Class | Stores class name and grade level |
-| Subject | Stores subject information |
+| Model     | Purpose                                                  |
+| --------- | -------------------------------------------------------- |
+| Student   | Stores student information and class reference           |
+| Teacher   | Stores teacher information                               |
+| Class     | Stores class name and grade level                        |
+| Subject   | Stores subject information                               |
 | Timetable | Stores class, teacher, subject, day, and time references |
 
 ## Development Approach
@@ -138,4 +138,6 @@ The initial focus is on establishing the project foundation and data models befo
 ## License
 
 No license has been specified yet.
+
+# school-management
 # school-management
