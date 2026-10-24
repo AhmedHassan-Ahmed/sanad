@@ -2,10 +2,33 @@ import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
 import './globals.css'
 
+
 export const metadata: Metadata = {
-  title: 'SANAD CORE — سند كور | A smarter way to move',
-  description: 'تعرّف على سند كور، جهاز ذكي قابل للارتداء لدعم الوعي بوضعية الجسم من خلال تنبيهات مخصصة وتطبيق مرافق. Meet SANAD CORE, a smart wearable designed to support posture awareness.',
-  generator: 'v.app',
+  metadataBase: new URL('https://sanad-one-hazel.vercel.app'),
+
+  title: 'SANAD CORE — سند كور | جهاز ذكي لمتابعة وضعية الجسم',
+
+  description:
+    'تعرّف على سند كور، جهاز ذكي قابل للارتداء يساعدك على متابعة وضعية الجسم وبناء عادات يومية أفضل.',
+
+  alternates: {
+    canonical: '/',
+  },
+
+  robots: {
+    index: true,
+    follow: true,
+  },
+
+  openGraph: {
+    title: 'SANAD CORE — سند كور',
+    description:
+      'اكتشف جهاز سند كور الذكي لمتابعة وضعية الجسم.',
+    url: 'https://sanad-one-hazel.vercel.app/',
+    siteName: 'SANAD CORE',
+    locale: 'ar_EG',
+    type: 'website',
+  },
   icons: {
     icon: [
       {
